@@ -74,7 +74,7 @@ button:focus-visible {
   justify-content: space-around;
 }
 .body{
-  background-color: #eb0df7a1;
+  background-image: url('https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg');
 }
 #root{
   width: 100%;
@@ -88,3 +88,23 @@ button:focus-visible {
   color: rgb(3, 3, 81);
   font-size: large;
 }
+.chakra-container{
+  display: flex;
+  justify-content: space-around;
+}
+.chakra-image css-1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.chakra-card__footer{
+display: flex;
+justify-content: center;
+}
+.welcomeLayout{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+} 
