@@ -1,13 +1,22 @@
-import React from "react";
-import { Button, Divider, Text, Center, Alert, AlertIcon } from "@chakra-ui/react";
+import React, { useContext } from "react";
+import {
+  Button,
+  Divider,
+  Text,
+  Center,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
 import { useState } from "react";
+import { CartContext } from "../context/ShoppingCartContext";
 
-const ItemCount = ({ top }) => {
+const ItemCount = ({ stock, id, price, name }) => {
+  const { cart, setCart } = useContext(CartContext);
   const [count, setCount] = useState(1);
   const [showAlert, setShowAlert] = useState(false);
 
   const addItem = () => {
-    if (count < top) {
+    if (count < stock) {
       setCount(count + 1);
     } else {
       setShowAlert(true);
@@ -24,28 +33,33 @@ const ItemCount = ({ top }) => {
   };
 
   const sendToCart = () => {
-    setCount(1);
+    setCart((currentItems) => {
+      const existingItemIndex = currentItems.findIndex((item) => item.id === id);
+      if (existingItemIndex !== -1) {
+        const updatedItems = [...currentItems];
+        updatedItems[existingItemIndex].quantity += count;
+        return updatedItems;
+      } else {
+        return [...currentItems, {id, name, price, quantity: count}];
+      }
+    });
   };
-
+console.log(stock)
   return (
     <>
       <Center>
         <Button onClick={substractItem}> - </Button>
-        <Text fontSize='1.5rem' p='2px'>
+        <Text fontSize="1.5rem" p="2px">
           {count}
         </Text>
         <Button onClick={addItem}>+</Button>
         <Divider />
-        {top > 0 ? (
-          <Button width='100%' onClick={sendToCart}>
+        {stock > 0 ? (<Button width="100%" onClick={sendToCart}>
             Add to Cart
-          </Button>
-        ) : (
-          <Text color='gray.500'>Out of stock</Text>
-        )}
+          </Button>) : (<Text color="gray.500">Out of stock</Text>)}
       </Center>
       {showAlert && (
-        <Alert status='warning'>
+        <Alert status="warning">
           <AlertIcon />
           No more stock
         </Alert>

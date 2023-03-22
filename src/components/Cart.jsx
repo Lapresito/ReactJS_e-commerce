@@ -1,18 +1,43 @@
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormHelperText,
-  Button,
-  Container,
-  Box,
-  Textarea,
-  Center,
-  Heading,
-} from "@chakra-ui/react";
+import { Button, Container, Box, Center, Heading, Text } from "@chakra-ui/react";
 import bgTitle from "../assets/titlebg.jpg";
+import { CartContext } from "../context/ShoppingCartContext";
+import React, { useContext, useState, useEffect } from "react";
+import Form from "./Form";
+import { Link } from "react-router-dom";
+import Item from "./Item";
 
 const Cart = () => {
+  const { cart, setCart } = useContext(CartContext);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    let newTotal = 0;
+    cart.forEach((item) => {
+      newTotal += item.price * item.quantity;
+    });
+    setTotal(newTotal);
+  }, [cart]);
+
+  const handleDelete = (id) => {
+    const newCart = cart.filter((item) => item.id !== id);
+    setCart(newCart);
+  };
+
+  const condition = () => {
+    if (cart.length) {
+      return<><Box>Total: U$D {total}</Box><Container><Form /></Container></>;
+    } else {
+      return (
+        <>
+        <Text>Your cart is empty! Have a look at our catalogue!</Text>
+        <Link to={"/catalogue"}>
+          <Button>Catalogue</Button>
+        </Link>
+        </>
+      );
+    }
+  };
+
   return (
     <>
       <Center bgImage={bgTitle} h="100px" color="black">
@@ -20,26 +45,27 @@ const Cart = () => {
           Cart
         </Heading>
       </Center>
-      <Container className="cart-container">
-        <FormControl  bgGradient="linear(to-r, red.500, yellow.500)">
-          <Box>
-            <FormLabel borderWidth="2px">Your name</FormLabel>
-            <Input type="text" />
-            <FormLabel borderWidth="2px">Email address</FormLabel>
-            <Input type="email" />
-            <FormHelperText>We'll never share your email.</FormHelperText>
-          </Box> 
-          <FormLabel>What do you want to tell us?</FormLabel>
-          <Textarea borderWidth="2px"></Textarea>
-          <Box className="btn-send">
-            <Button  borderWidth="2px" type="submit"  variant="outline" color='black' _hover={{
-                  bgColor: "yellow",
-                }}>
-              Send information
-            </Button>
-          </Box>
-        </FormControl>
-      </Container>
+      <Box>
+        {cart.map((item) => {
+          return (
+            <React.Fragment key={item.id}>
+              <Container className="cart-container">
+                <Box>{item.name}</Box>
+                <Box>Quantity:{item.quantity}</Box>
+                <Box className="subtotal">
+                  Price: U$D {item.price * item.quantity}
+                </Box>
+                <Button onClick={() => handleDelete(item.id)}>
+                  <span className="material-symbols-outlined">delete</span>
+                </Button>
+              </Container>
+            </React.Fragment>
+          );
+        })}
+        <Container>
+          {condition()}
+        </Container>
+      </Box>
     </>
   );
 };
