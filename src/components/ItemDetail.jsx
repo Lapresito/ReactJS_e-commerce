@@ -14,13 +14,34 @@ import {
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import ItemCount from "./ItemCount";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { doc, getDoc, getFirestore } from "firebase/firestore"
 
-const ItemDetail = ({ uniObjs }) => {
+const ItemDetail = ({ products }) => {
   const { id } = useParams();
-  const universeObjFilter = uniObjs.filter(
-    (universeObj) => universeObj.id == id
-  );
+
+  const [product, setProduct ] = useState([]);
+
+useEffect(() => {
+  const db = getFirestore();
+  const uniObjReference = doc(db, "UnniversseObjects", `${id}`);
+
+  getDoc(uniObjReference).then((snapshot)=>{
+    if(snapshot.exists()){
+      setProduct(snapshot.data());
+    } else{
+      <><Alert>No such document!</Alert></>
+    }
+  });
+}, []);
+
+if (!products) {
+  return <div>Loading...</div>;
+}
+
+const universeObjFilter = products.filter(
+  (universeObj) => universeObj.id == id
+);
 
   return (
     <>

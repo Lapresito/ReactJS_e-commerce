@@ -2,11 +2,11 @@ import React from 'react'
 import { Container } from '@chakra-ui/react'
 import Item from './Item'
 
-const ItemList = ({uniObjs}) => {
+const ItemList = ({products}) => {
   return (
     <>
       <Container maxW="container.sm" className="main-catalogue">
-        {uniObjs?.map((universeObj) => (
+        {products?.map((universeObj) => (
           <Item
             key={universeObj.id}
             id={universeObj.id}

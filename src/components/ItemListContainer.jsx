@@ -1,13 +1,29 @@
 import React from 'react'
 import ItemList from './ItemList'
-import data from '../data.json'
 import { useParams } from 'react-router-dom'
 import { Heading, Center } from '@chakra-ui/react'
 import bgTitle from '../assets/titlebg.jpg'
+import { useState, useEffect } from "react";
+import { collection, getDocs, getFirestore } from "firebase/firestore"
 
 const ItemListContainer = () => {
+  const [products, setProducts] = useState([]);
   const {category} = useParams();
-  const catFilter = data.filter((universeObj) => universeObj.category === category);
+
+  useEffect(()=>{
+    const db = getFirestore();
+    const universeObjs = collection(db, "UnniversseObjects");
+    getDocs(universeObjs).then((querySnapshot)=>{
+      const products = querySnapshot.docs.map((doc)=>({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setProducts(products);
+    });
+  }, [])
+
+  const catFilter = products.filter((product) => product.category === category);
+  
   return (
     <div>
       <Center bgImage={bgTitle} h="100px" color="black">
@@ -15,9 +31,10 @@ const ItemListContainer = () => {
           Univversse objects
         </Heading>
       </Center>
-      {category ? <ItemList uniObjs={catFilter} /> : <ItemList uniObjs={data} />}
+      {products.length > 0 ? (category ? <ItemList products={catFilter} /> : <ItemList products={products} />) : <div>Loading...</div>}
     </div>
   )
 }
+
 
 export default ItemListContainer
