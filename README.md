@@ -1,38 +1,58 @@
-# Bienvenidos a Unniversse E-Commerce
+# Bienvenidos a Unniversse E-Commerce ✨🎇☀️🌑🪐🌌🌎🎇✨
 
-Esta es una pagina que simula un E-Commerce desde la parte Front-End.
-Se trata de un E-Shop sobre cuerpos en el Universo, algo irracional pero llamativo para una prueba de comercio, generado con las herramientas React JavaScript en formato JSX, routes y vite.
-Tambien incluye estilos proporcionados por Chakra ui.
-Cuenta con una pagina de inicio que te da una bienvenida, un catalogo con todos los objetos a vender y un Menu desplegable que te ayuda a filtrar por categoria.
-Cada objeto tiene sus respectivos detalles para que sepas que estas comprando! Simplemente seleccionaras los que quieras comprar siendo el maximo esl stock disponible, luego los puedes agregar al Carrito.
-Tambien cuenta con un carrito al cual puedes acceder en todo momento para llevar una visualizacion adecuada de lo que vas a querer comprar y un formulario para que se te envie tu compra y guardar clientes.
----
-### Recomendaciones:
-
-1. Instalar los paquetes necesarios para correr React, Chakra y Routing
-2. Contar con conexion a Internet, ya que las imagenes provienen de la web
+Un E-Commerce que desafia las leyes de la realidad.
+Se trata de un E-Shop sobre cuerpos en el Universo, algo irracional pero llamativo para una simulación de comercio, en el cuál podrás añadir los objectos que desees a tu carrito de compras y realizar una orden de compra, de la cual deberás guardar el ID para realizarle un hipotético seguimiento!
 
 ---
 
-## Importante
+### Instalaciones necesarias ⚙️:
+
+1. Instalar Node.js [NodeJS](https://nodejs.org/es/download)
+2. Instalar los paquetes necesarios para correr React guía: [React](https://es.reactjs.org/)
+3. Instalar React router DOM [RouterDom](https://www.freecodecamp.org/espanol/news/tutorial-de-react-router-version-6-como-navegar-a-otros-componentes-y-configurar-un-enrutador/)
+4. Instalar Chakra ui [Chakra Ui](https://chakra-ui.com/getting-started)
+5. Instalar SweetAlert2 [SweetAlert2](https://sweetalert2.github.io/#download)
+
+---
+
+## Deployment 🚀🛸
 
 Ejecutar el siguiente comando en CMD o en la consola de VScode
 
 ```
 npm run dev
 ```
+
 Esperar el tiempo de carga y luego realizar CTRL + Click en el link brindado por la consola para visualizar la pagina en el navegador.
 
-
 ---
->Aqui se puede ver un GIF que muestra rapidamente el flujo y contenido de la pagina.
 
-![Muestra del sitio](./src/assets/UnniversseEshop.gif)
+### Vista Previa 🥽:
+
+> Aqui se puede ver un GIF que muestra rapidamente el flujo y contenido de la pagina.
+
+## ![Muestra del sitio](./src/assets/UnniversseEshop.gif)
 ---
-#### Datos del creador
-|Nombre|Apellido|Mail|
-|---|---|---|
-|Joaquin|Laprovitera|joacolaprovitera@gmail.com|
+## Construido con 🛠️
 
-Academia de estudio: 
+1. ReactJS
+2. JSX
+3. Vite
+4. ReactRouterDOM
+5. Chakra-Ui
+6. SweetAlert2
+---
+## Datos del creador 😎
+
+| Nombre  | Apellido    | Mail                       | LinkedIn | GitHub
+| ------- | ----------- | -------------------------- | -------- | ------
+| Joaquin | Laprovitera | joacolaprovitera@gmail.com |https://www.linkedin.com/in/joaqu%C3%ADn-laprovitera-ojeda-b891031b3/ |https://gist.github.com/Lapresito
+
+Academia:
 [CODERHOUSE](https://plataforma.coderhouse.com/cursos)
+
+---
+#### Agradecimientos 🎁:
+
+Profesor: Omar Manias [GitHub](https://github.com/omanias)
+Tutor: Gianluca Fava [LinkedIn](https://www.linkedin.com/in/gianlucafava/)
