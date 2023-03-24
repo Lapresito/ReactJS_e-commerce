@@ -16,6 +16,7 @@ import { useParams } from "react-router-dom";
 import ItemCount from "./ItemCount";
 import { useState, useEffect } from "react";
 import { doc, getDoc, getFirestore } from "firebase/firestore"
+import Loading from "./Loading";
 
 const ItemDetail = ({ products }) => {
   const { id } = useParams();
@@ -36,7 +37,7 @@ useEffect(() => {
 }, []);
 
 if (!products) {
-  return <div>Loading...</div>;
+  return <Loading/>;
 }
 
 const universeObjFilter = products.filter(

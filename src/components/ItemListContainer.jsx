@@ -5,6 +5,7 @@ import { Heading, Center } from '@chakra-ui/react'
 import bgTitle from '../assets/titlebg.jpg'
 import { useState, useEffect } from "react";
 import { collection, getDocs, getFirestore } from "firebase/firestore"
+import Loading from './Loading'
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -31,7 +32,7 @@ const ItemListContainer = () => {
           Univversse objects
         </Heading>
       </Center>
-      {products.length > 0 ? (category ? <ItemList products={catFilter} /> : <ItemList products={products} />) : <div>Loading...</div>}
+      {products.length > 0 ? (category ? <ItemList products={catFilter} /> : <ItemList products={products} />) : <Loading/>}
     </div>
   )
 }

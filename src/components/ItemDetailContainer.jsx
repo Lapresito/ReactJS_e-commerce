@@ -1,5 +1,6 @@
 import React from "react";
 import ItemDetail from "./ItemDetail";
+import Loading from "./Loading";
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import { collection, getDocs, getFirestore } from "firebase/firestore"
@@ -22,7 +23,7 @@ const ItemDetailContainer = () => {
 
   const catFilter = products.filter((product) => product.id === id);
   return (
-    <>{products.length > 0 ? (id ? <ItemDetail products={catFilter} /> : <ItemDetail products={products} />) : <div>Loading...</div>}
+    <>{products.length > 0 ? (id ? <ItemDetail products={catFilter} /> : <ItemDetail products={products} />) : <Loading/>}
     </>
   );
 };
