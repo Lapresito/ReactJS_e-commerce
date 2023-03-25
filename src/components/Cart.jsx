@@ -1,10 +1,17 @@
-import { Button, Container, Box, Center, Heading, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Container,
+  Box,
+  Center,
+  Heading,
+  Text,
+  Flex,
+} from "@chakra-ui/react";
 import bgTitle from "../assets/titlebg.jpg";
 import { CartContext } from "../context/ShoppingCartContext";
 import React, { useContext, useState, useEffect } from "react";
 import Form from "./Form";
 import { Link } from "react-router-dom";
-import Item from "./Item";
 
 const Cart = () => {
   const { cart, setCart } = useContext(CartContext);
@@ -25,14 +32,36 @@ const Cart = () => {
 
   const condition = () => {
     if (cart.length) {
-      return<><Box>Total: U$D {total}</Box><Container><Form /></Container></>;
+      return (
+        <><Flex flexDirection="column"
+        alignItems="center"
+        justifyContent="center">
+          <Box color="white">Total: U$D {total}</Box>
+          <Container>
+            <Form/>
+          </Container>
+          </Flex>
+        </>
+      );
     } else {
       return (
         <>
-        <Text>Your cart is empty! Have a look at our catalogue!</Text>
-        <Link to={"/catalogue"}>
-          <Button>Catalogue</Button>
-        </Link>
+          <Text color="white">
+            Your cart is empty! Have a look at our catalogue!
+          </Text>
+          <Link to={"/catalogue"}>
+            <Button
+              borderWidth="2px"
+              type="submit"
+              variant="outline"
+              color="black"
+              _hover={{
+                bgColor: "yellow",
+              }}
+            >
+              Catalogue
+            </Button>
+          </Link>
         </>
       );
     }
@@ -45,27 +74,27 @@ const Cart = () => {
           Cart
         </Heading>
       </Center>
-      <Box>
-        {cart.map((item) => {
-          return (
-            <React.Fragment key={item.id}>
-              <Container className="cart-container">
-                <Box>{item.name}</Box>
-                <Box>Quantity:{item.quantity}</Box>
-                <Box className="subtotal">
-                  Price: U$D {item.price * item.quantity}
-                </Box>
-                <Button onClick={() => handleDelete(item.id)}>
-                  <span className="material-symbols-outlined">delete</span>
-                </Button>
-              </Container>
-            </React.Fragment>
-          );
-        })}
-        <Container>
-          {condition()}
-        </Container>
-      </Box>
+      <Flex flexDirection="column" alignItems="center" justifyContent="center">
+        <Box>
+          {cart.map((item) => {
+            return (
+              <React.Fragment key={item.id}>
+                <Container className="cart-container">
+                  <Box color="white">{item.name}</Box>
+                  <Box color="white">Quantity:{item.quantity}</Box>
+                  <Box color="white" className="subtotal">
+                    Price: U$D {item.price * item.quantity}
+                  </Box>
+                  <Button onClick={() => handleDelete(item.id)}>
+                    <span className="material-symbols-outlined">delete</span>
+                  </Button>
+                </Container>
+              </React.Fragment>
+            );
+          })}
+          <Container>{condition()}</Container>
+        </Box>
+      </Flex>
     </>
   );
 };

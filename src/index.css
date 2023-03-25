@@ -68,7 +68,7 @@ button:focus-visible {
   }
 }
 .navBar{
-  background-color: rgba(137, 43, 226, 0.744);
+  background-color: rgba(224, 6, 155, 0.744);
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -107,4 +107,5 @@ justify-content: center;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  color: #ddbffbf9
 } 

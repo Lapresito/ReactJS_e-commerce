@@ -26,7 +26,9 @@ const NavBar = () => {
             src="https://assets.newatlas.com/dims4/default/ac389ce/2147483647/strip/true/crop/1620x1080+150+0/resize/1200x800!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Farchive%2Funiverse-expanding-acceleration-1.jpg"
           />
           <Box p="10" w="300px" h="100">
-            <Heading size="lg">
+            <Heading  _hover={{
+                   color:'#1f023cbe'
+                  }} size="lg">
               <Link to={"/"}>Unniversse</Link>
             </Heading>
           </Box>
@@ -38,10 +40,10 @@ const NavBar = () => {
                   as={Button}
                   size="lg"
                   variant="outline"
-                  bgGradient="linear(to-r, teal.500, green.500)"
+                  bgGradient="linear(to-r, rgba(43, 150, 226, 0.744), rgba(224, 6, 155, 0.744))"
                   _hover={{
-                    bgGradient: "linear(to-r, red.500, yellow.500)",
-                  }}
+                    color:'#ddbffbf9'
+                   }} 
                   m="5"
                 >
                   Catalogue
@@ -60,7 +62,7 @@ const NavBar = () => {
                 variant="outline"
                 bgGradient="linear(to-r, teal.500, green.500)"
                 _hover={{
-                  bgGradient: "linear(to-r, red.500, yellow.500)",
+                  color:'#ddbffbf9'
                 }}
                 rightIcon={<ChevronDownIcon />}
                 m="5"
